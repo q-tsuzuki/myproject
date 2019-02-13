@@ -5,7 +5,6 @@
 /*	Author: Marketify
 /*	This file is made for CURRENT TEMPLATE
 
-
   01) ARLO BASE
   02) ARLO CONTENT
   03) ARLO ABOUT
@@ -27,13 +26,68 @@
 /*---------------------------------------------------*/
 /*	01) ARLO BASE
 /*---------------------------------------------------*/
+@font-face {
+  font-family: 'Gill Sans Std Book';
+  src: url(/css/font/gillsans_book.woff2); }
+
 html {
   overflow-x: hidden;
   padding: 0px;
   margin: 1px;
-  font-family: "Helvetica Neue", Helvetica, Arial, 游ゴシック, YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", メイリオ, Meiryo, sans-serif;
-}
+  font-family: "Helvetica Neue", Helvetica, Arial, 游ゴシック, YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", メイリオ, Meiryo, sans-serif; }
 
 .lp-header_nav a, .lp-footer_nav a {
-  font-family: "Gill Sans Std Book", sans-serif;
-}
+  font-family: "Gill Sans Std Book", sans-serif; }
+
+.lp-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 50px 80px 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  z-index: 2; }
+  .lp-header a {
+    display: block; }
+    .lp-header a img {
+      width: 266px; }
+  .lp-header_nav {
+    color: #fff; }
+    .lp-header_nav > ul {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex; }
+      .lp-header_nav > ul > li {
+        margin-left: 40px;
+        font-size: 14px;
+        letter-spacing: 1px;
+        font-family: "Gill Sans Std Book", sans-serif; }
+        .lp-header_nav > ul > li:first-child {
+          margin-left: 0; }
+
+.lp-kv_wrap {
+  position: relative; }
+  .lp-kv_wrap .lp-kv_overlay {
+    background-image: url(/replication/pas/images/kv_overlay.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1; }
+
+.lp-feature {
+  background-color: #F6F5F6; }
