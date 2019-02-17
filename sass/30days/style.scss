@@ -26,26 +26,290 @@
 /*---------------------------------------------------*/
 /*	01) ARLO BASE
 /*---------------------------------------------------*/
+// レイアウト幅
+$layout-width-inner: 960px;
 
-@mixin mediaSP {
-  @media screen and (max-width: 786px) {
-    @content
+// ブレークポイント
+$breakpoints: (
+  "sp": "screen and (max-width: 767px)",
+  "tab": "screen and (max-width: #{$layout-width-inner - 1px})",
+  "pc": "screen and (min-width: #{$layout-width-inner})",
+);
+
+@mixin mq($breakpoint: sp) {
+
+  @media #{map-get($breakpoints, $breakpoint)} {
+
+    @content;
   }
 }
 
+$main-color: #3F51B5;
+
+@mixin buttnstyle {
+  display: inline-flex;
+  padding: 15px 0;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  border-radius: 12px;
+}
 
 html {
   overflow-x: hidden;
-  padding: 0px;
-  margin: 1px;
-  font-family: "Helvetica Neue", Helvetica, Arial, 游ゴシック, YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", メイリオ, Meiryo, sans-serif;
+  font-family:"Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
 }
 
+header {
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  align-items: center;
+  padding: 30px 140px;
+  color: #fff;
+  background-color: $main-color;
 
-.lp-header_nav,.lp-footer_nav {
+  @include mq('tab') {
+    padding: 10px 20px;
+  }
+
+  
+  & > .header_logo {
+    
+    & > img {
+      width: 200px;
+
+      @include mq('tab') {
+        width: 80%;
+      }
+    }
+  }
+
+  & > .header_list {
+
+    @include mq('tab') {
+      display: none;
+    }
+    
+    & > ul {
+      display: flex;
+      
+      & > li {
+        font-size: 16px;
+        line-height: 1;
+
+        &:not(:nth-child(1)) {
+          margin-left: 30px;
+        }
+      }
+    }
+  }
+
+  .header_item {
+    
+    a {
+      position: relative;
+
+      &:before {
+        position: absolute;
+        top: 1.3em;
+        left: 0;
+        content: "";
+        display: inline-block;
+        width: 0;
+        height: 3px;
+        background: #AE2E50;
+        transition: .2s;
+      }
+
+      &:hover:before {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.hero {
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255,255,255,0.2)
+  }
 
 
-  a {
-    font-family: "Gill Sans Std Book", sans-serif;
+  &_text {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    text-align: center;
+
+    & > h1 {
+      font-size: 68px;
+      line-height: 1.5;
+      margin-bottom: 15px;
+
+      @include mq('tab') {
+        font-size: 30px;
+      }
+
+      @include mq('sp') {
+        font-size: 20px;
+      }
+    }
+
+    & > p {
+      font-size: 38px;
+      line-height: 1.8;
+      margin-bottom: 80px;
+
+      @include mq('tab') {
+        font-size: 20px;
+        margin-bottom: 50px;
+      }
+
+      @include mq('sp') {
+        font-size: 14px;
+        margin-bottom: 30px;
+      }
+    }
+
+    & > .btn_wrap {
+      @include buttnstyle;
+      background-color: $main-color;
+      color: #fff;
+      font-size: 38px;
+      width: 390px;
+
+
+      @include mq('tab') {
+        width: 200px;
+        font-size: 20px;
+      }
+
+      @include mq('sp') {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+.feature {
+
+  background-color: #EFEFEF;
+
+  &_inner {
+    box-sizing: border-box;
+    text-align: center;
+
+    @include mq('pc') {
+      width: 100%;
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 30px 70px;
+    }
+
+    @include mq('tab') {
+      padding: 30px;
+    }
+
+    @include mq('sp') {
+      padding: 30px 20px;
+    }
+
+    h2 {
+      font-size: 60px;
+      line-height: 1.6;
+      padding-bottom: 45px;
+      position: relative;
+      display: inline-block;
+      margin-bottom: 70px;
+
+      @include mq('sp') {
+        font-size: 30px;
+        padding-bottom: 15px;
+        margin-bottom: 40px;
+      }
+
+      &:before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        width: 80%;
+        height: 3px;
+        background-color: $main-color;
+        display: block;
+        background-color: #3F51B5;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  &_itemList {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  
+  &_item {
+    flex: 0 0 calc(33% - 15px);
+    box-sizing: border-box;
+    text-align: justify;
+    background-color: #fff;
+    margin-bottom: 20px;
+
+    @include mq('tab') {
+      flex: 0 0 calc(50% - 10px);
+    }
+
+    @include mq('sp') {
+      flex: 0 0 100%;
+    }
+
+    a {
+      padding: 16px 16px 30px;
+      display: block;
+      transition: box-shadow .3s;
+
+      &:hover {
+        box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.4);
+      }
+    }
+
+    img {
+      margin-bottom: 25px;
+    }
+
+    h3 {
+      font-size: 20px;
+      line-height: 1.2;
+      margin-bottom: 30px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    
+
+    &:nth-child(n + 4) {
+      margin-bottom: 0px;
+    }
+
+    @include mq('tab') {
+      &:nth-child(n + 3) {
+        margin-bottom: 20px;
+      }
+    }
   }
 }

@@ -16,10 +16,8 @@ gulp.task('sass', function () {
     // Sassのコンパイルを実行
     .pipe(plumber())
     .pipe(sass())
-    .pipe(postcss(processors))
-    // Sassのコンパイルエラーを表示
-    // (これがないと自動的に止まってしまう)
     .on('error', sass.logError))
+    .pipe(postcss(processors))
     // cssフォルダー以下に保存
     .pipe(gulp.dest('css'));
 });

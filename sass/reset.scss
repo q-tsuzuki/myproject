@@ -66,6 +66,7 @@ td {
   margin: 0;
   padding: 0;
   border: 0;
+  font-weight: normal;
 }
 
 html {
@@ -121,6 +122,8 @@ ul {
 img,
 video {
   max-width: 100%;
+  width: 100%;
+  vertical-align: top;
 }
 
 img {

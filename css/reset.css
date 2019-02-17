@@ -65,7 +65,8 @@ th,
 td {
   margin: 0;
   padding: 0;
-  border: 0; }
+  border: 0;
+  font-weight: normal; }
 
 html {
   font-size: 62.5%; }
@@ -112,7 +113,9 @@ ul {
 
 img,
 video {
-  max-width: 100%; }
+  max-width: 100%;
+  width: 100%;
+  vertical-align: top; }
 
 img {
   border-style: none; }
